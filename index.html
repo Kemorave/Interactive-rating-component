@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+      integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://fonts.google.com/specimen/Overpass"
+    />
+    <title>Frontend Mentor | Interactive rating component</title>
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+        color: hsl(0, 0%, 100%);
+      }
+      .attribution a {
+        color: hsl(0, 0%, 100%);
+      }
+      body {
+        background-color: hsl(216, 12%, 8%);
+      }
+      .card {
+        background-color: hsl(213, 19%, 18%);
+      }
+      .midp {
+        color: hsl(217, 12%, 63%);
+        font-size: 0.8rem;
+      }
+      .common-card {
+        background-color: hsl(214, 13%, 33%);
+        text-align: center;
+        color: hsl(25, 97%, 53%);
+      }
+      .defbutton {
+        border-radius: 10rem;
+        text-align: center;
+        padding: 0.5rem;
+        display: block;
+        font-stretch: expanded;
+        font-family: Overpass "Courier New", Courier, monospace;
+        font-size: medium;
+        color: hsl(0, 0%, 100%);
+        background-color: hsl(25, 97%, 53%);
+      }
+      .defbutton:active {
+        background-color: hsl(0, 0%, 100%);
+        color: hsl(25, 97%, 53%);
+      }
+      .chobutton {
+        border-radius: 2rem;
+        text-align: center;
+        padding: 0.5rem 1rem;
+        display: block;
+        color: hsl(217, 12%, 63%);
+        background-color: hsl(214, 13%, 33%);
+        font-weight: 500;
+      }
+      .chobutton:focus {
+        color: hsl(0, 0%, 100%);
+        background-color: hsl(217, 12%, 63%);
+      }
+      .chobutton:active {
+        color: hsl(0, 0%, 100%);
+        background-color: hsl(25, 97%, 53%);
+      }
+    </style>
+  </head>
+  <body  style="display: flex; flex-flow: column; height: 95vh; align-items: center; justify-content: center;" >
+    <header >
+      <!-- Rating state start -->
+      <div id="chocard" class="card p-6 m-5 rounded-2xl">
+        <div class="w-64 gap-4 grid">
+          <div class="common-card p-3 justify-self-start rounded-full">
+            <img alt="star" class="h-3 w-3" src="./images/icon-star.svg" />
+          </div>
+          <p class="font-semibold text-2xl text-white">How did we do?</p>
+          <p class="midp">
+            Please let us know how we did with your support request. All
+            feedback is appreciated to help us improve our offering!
+          </p>
+          <div class="grid grid-cols-5 gap-4 justify-items-center">
+            <button class="chobutton">1</button>
+            <button class="chobutton">2</button>
+            <button class="chobutton">3</button>
+            <button class="chobutton">4</button>
+            <button class="chobutton">5</button>
+          </div>
+          <button class="defbutton">SUBMIT</button>
+        </div>
+      </div>
+      <!-- Rating state end -->
+
+      <!-- Thank you state start -->
+      <div id="thankcard" hidden class="card text-center p-6  m-5 rounded-2xl">
+        <div class="w-64 gap-5  grid">
+          <img
+            alt="thanks"
+            class="h-25 w-25 justify-self-center"
+            src="./images/illustration-thank-you.svg"
+          />
+
+          <!-- Rating state start -->
+
+          <div
+            id="messelement"
+            class="justify-self-center common-card py-1 px-4 rounded-3xl"
+          > 
+          </div>
+          <p class="font-semibold text-2xl text-white">Thank you!</p>
+          <p class="midp">
+            We appreciate you taking the time to give a rating. If you ever need
+            more support, don’t hesitate to get in touch!
+          </p>
+        </div>
+      </div>
+    <!-- Thank you state end -->
+
+      <script>
+        var rating;
+         $("button.chobutton").click(function (e) {
+          rating = e.target.innerHTML; 
+        });
+        $("button.defbutton").click(function () {
+          $("#messelement").html("<p>You selected "+rating+" out of 5</p>"); 
+          $("#chocard").hide();
+          $("#thankcard").show();
+        });
+      </script>
+    </header>
+    <footer>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="#">Kemorave</a>.
+      </div>
+    </footer>
+  </body>
+</html>
